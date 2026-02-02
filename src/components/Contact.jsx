@@ -66,9 +66,9 @@ export default function Contact() {
   }
 
   const socials = [
-    { name: 'LinkedIn', icon: '💼', url: '#', color: 'from-blue-600 to-blue-400' },
-    { name: 'GitHub', icon: '🐙', url: '#', color: 'from-gray-700 to-gray-500' },
-    { name: 'Instagram', icon: '🎨', url: '#', color: 'from-pink-600 to-pink-400' },
+    { name: 'LinkedIn', icon: '💼', url: 'https://www.linkedin.com/in/abbiyu-putra-praditama-362116306/', color: 'from-blue-600 to-blue-400' },
+    { name: 'GitHub', icon: '🐙', url: 'https://github.com/Abiyu48', color: 'from-gray-700 to-gray-500' },
+    { name: 'Instagram', icon: '🎨', url: 'https://www.instagram.com/abyuptraa/', color: 'from-pink-600 to-pink-400' },
   ]
 
   return (
