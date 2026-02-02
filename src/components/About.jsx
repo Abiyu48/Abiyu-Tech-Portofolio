@@ -3,6 +3,19 @@ import { useLanguage } from './LanguageProvider'
 export default function About() {
   const { t } = useLanguage()
 
+  // Function to handle CV download
+  const handleDownloadCV = (e) => {
+    e.preventDefault()
+    
+    // Download CV from public folder
+    const link = document.createElement('a')
+    link.href = '/CV ABBIYU PUTRA.pdf'
+    link.download = 'CV ABBIYU PUTRA.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <section id="about" className="relative py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background Gradient */}
@@ -79,9 +92,8 @@ export default function About() {
             </div>
 
             {/* CTA */}
-            <a 
-              href="/documents/CV_Abbiyu_Putra_Praditama.pdf" 
-              download="CV_Abbiyu_Putra_Praditama.pdf"
+            <button
+              onClick={handleDownloadCV}
               className="btn btn-primary mt-8 group inline-flex"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -90,7 +102,7 @@ export default function About() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
