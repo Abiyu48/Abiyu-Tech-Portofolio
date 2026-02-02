@@ -9,8 +9,8 @@ export default function About() {
     
     // Download CV from public folder
     const link = document.createElement('a')
-    link.href = '/CV ABBIYU PUTRA.pdf'
-    link.download = 'CV ABBIYU PUTRA.pdf'
+    link.href = '/cv-abiyyu-putra.pdf'
+    link.download = 'cv-abiyyu-putra.pdf'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
