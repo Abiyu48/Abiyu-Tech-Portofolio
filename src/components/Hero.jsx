@@ -1,4 +1,27 @@
 import { useLanguage } from './LanguageProvider'
+import { useState, useEffect } from 'react'
+
+function TypingText({ text }) {
+  const [displayed, setDisplayed] = useState('')
+  const [idx, setIdx] = useState(0)
+
+  useEffect(() => {
+    if (idx < text.length) {
+      const t = setTimeout(() => {
+        setDisplayed(prev => prev + text[idx])
+        setIdx(i => i + 1)
+      }, 100)
+      return () => clearTimeout(t)
+    }
+  }, [idx, text])
+
+  return (
+    <span className="gradient-text inline-block">
+      {displayed}
+      {idx < text.length && <span className="animate-pulse">|</span>}
+    </span>
+  )
+}
 
 export default function Hero() {
   const { t } = useLanguage()
@@ -105,7 +128,7 @@ export default function Hero() {
                 <div className="relative">
                   <div className="w-60 h-60 rounded-full overflow-hidden ring-4 ring-purple-500/50 group-hover:ring-purple-500 transition-all duration-300 group-hover:scale-110">
                     <img
-                      src="/images/profile-formal.jpg"
+                      src="/images/profile-formal.jpeg"
                       alt="Abbiyu Putra Praditama"
                       className="w-full h-full object-cover"
                     />

@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react'
 import { useLanguage } from './LanguageProvider'
 
@@ -10,90 +8,100 @@ export default function Portfolio() {
   const projects = [
     {
       id: 1,
+      slug: 'web-app-mental-health',
       title: 'Web App Mental Health',
       category: 'web',
-      image: '🛍️',
+      image: '/images/mental-health.png',
       description: 'The Mental Health Web App is a platform designed to help individuals maintain their mental health. With features such as journals, meditation, and counseling, this application provides a safe space for users to share their experiences and receive support.',
       tags: ['React', 'AI', 'Tailwind'],
       gradient: 'from-purple-500 to-pink-500'
     },
     {
       id: 2,
+      slug: 'web-app-ai-smarthome',
       title: 'Web App AI Smarthome',
       category: 'web',
-      image: '💳',
+      image: '',
       description: 'The Smarthome Web App is a platform designed to help individuals control their smart home devices. With features such as lighting, temperature, and security controls, this application provides a safe space for users to share their experiences and receive support.',
       tags: ['PHP', 'AI', 'Web'],
       gradient: 'from-cyan-500 to-blue-500'
     },
     {
       id: 3,
+      slug: 'web-app-lumbung-tani',
       title: 'Web App Lumbung Tani',
       category: 'web',
-      image: '📊',
+      image: '',
       description: 'The Lumbung Tani Web App is a platform designed to help farmers sell their agricultural products. With features such as product listing, order management, and payment processing, this application provides a safe space for users to share their experiences and receive support.',
       tags: ['PHP', 'Web', 'UI/UX'],
       gradient: 'from-orange-500 to-red-500'
     },
     {
       id: 4,
+      slug: 'web-app-sikasir',
       title: 'Web App Sikasir',
       category: 'web',
-      image: '🎨',
+      image: '',
       description: 'The Sikasir Web App is a platform designed to help small and medium enterprises manage their sales and inventory. With features such as product listing, order management, and payment processing, this application provides a safe space for users to share their experiences and receive support.',
       tags: ['PHP', 'CSS', 'Laravel'],
       gradient: 'from-green-500 to-cyan-500'
     },
     {
       id: 5,
+      slug: 'ecolink-app',
       title: 'Ecolink App',
       category: 'uiux',
-      image: '💪',
+      image: '',
       description: 'The Ecolink App is a digital platform for reporting waste issues and promoting environmental awareness. Users can easily report waste in their surroundings and contribute to creating a cleaner and more sustainable environment.',
       tags: ['UI/UX', 'Figma', 'Design'],
       gradient: 'from-pink-500 to-purple-500'
     },
     {
       id: 6,
+      slug: 'web-app-cafe-milenial',
       title: 'Web App Cafe Milenial',
       category: 'web',
-      image: '🍔',
+      image: '',
       description: 'The Cafe Milenial Web App is a platform designed to help cafes sell their products. With features such as product listing, order management, and payment processing, this application provides a safe space for users to share their experiences and receive support.',
       tags: ['PHP', 'CSS', 'JavaScript'],
       gradient: 'from-pink-500 to-orange-500'
     },
     {
       id: 7,
+      slug: 'web-app-sidodolan',
       title: 'Web App Sidodolan',
       category: 'web',
-      image: '🍔',
+      image: '',
       description: 'Web App Sidodolan is a tourism platform designed to help users explore Sidoarjo more easily. This website provides information on tourist destinations and helps users plan and manage their travel time when visiting Sidoarjo.',
       tags: ['HTML', 'CSS', 'JavaScript'],
       gradient: 'from-pink-500 to-blue-500'
     },
     {
       id: 8,
+      slug: 'web-app-ai-split-bill',
       title: 'Web App AI Split Bill',
       category: 'web',
-      image: '🍔',
+      image: '',
       description: 'Web App AI Split Bill is a smart platform designed to help users split bills easily and fairly. Using AI-powered calculations, this application simplifies expense sharing among individuals or groups, making the process faster, clearer, and more efficient.',
       tags: ['React', 'CSS', 'JavaScript'],
       gradient: 'from-green-500 to-orange-500'
     },
     {
       id: 9,
+      slug: 'smartroom-app',
       title: 'SmartRoom. App',
       category: 'uiux',
-      image: '🍔',
+      image: '',
       description: 'SmartRoom. App is a platform designed to help users control their smart home devices. With features such as lighting, temperature, and security controls, this application provides a safe space for users to share their experiences and receive support.',
       tags: ['UI/UX', 'Figma', 'Design'],
       gradient: 'from-purple-500 to-blue-500'
     },
     {
       id: 10,
+      slug: 'web-app-smp-negeri-2-prambon',
       title: 'Web App SMP Negeri 2 Prambon',
       category: 'uiux',
-      image: '🍔',
+      image: '',
       description: 'Web App SMP Negeri 2 Prambon is a platform designed to help users control their smart home devices. With features such as lighting, temperature, and security controls, this application provides a safe space for users to share their experiences and receive support.',
       tags: ['UI/UX', 'Figma', 'Design'],
       gradient: 'from-purple-500 to-orange-500'
@@ -150,23 +158,49 @@ export default function Portfolio() {
               <div className={`absolute -inset-1 bg-gradient-to-r ${project.gradient} rounded-2xl blur-lg opacity-0 group-hover:opacity-75 transition duration-500`}></div>
 
               {/* Card */}
-              <div className="relative glass rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300">
+              <div className="relative glass rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
                 {/* Image Area */}
-                <div className={`h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center text-7xl relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300"></div>
-                  <span className="relative z-10 group-hover:scale-125 transition-transform duration-500">
-                    {project.image}
-                  </span>
+                <div className={`h-48 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
+                    />
+                  ) : null}
+                  <div
+                    className={`absolute inset-0 ${project.image ? 'hidden' : 'flex'} flex-col items-center justify-center gap-2`}
+                    style={{ display: project.image ? 'none' : 'flex' }}
+                  >
+                    <span className="text-4xl font-black text-white/30 uppercase tracking-widest text-center px-4 leading-tight">
+                      {project.title.split(' ').slice(0, 2).join(' ')}
+                    </span>
+                    <span className="text-xs text-white/50 uppercase tracking-widest">Coming Soon</span>
+                  </div>
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300"></div>
                 </div>
 
                 {/* Content */}
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 flex-1 flex flex-col">
                   <h3 className="text-xl font-bold group-hover:text-purple-400 transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <p className="text-gray-400 text-sm">
+                  <p className="text-gray-400 text-sm flex-1 line-clamp-3">
                     {project.description}
                   </p>
+                  
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {project.tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 text-xs font-medium rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
